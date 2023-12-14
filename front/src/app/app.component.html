@@ -1,0 +1,39 @@
+<!-- app.component.html -->
+<div class="app">
+  <header class="header">
+    <h2 class="title">Welcome on the connected four game!</h2>
+
+    <div class="player">Player number :{{ playerId }} </div>
+    <span *ngIf="!connected" class="tag offline">offline</span>
+    <span *ngIf="connected" class="tag online">online</span>
+  </header>
+
+  <div *ngIf="winMessage">{{ winMessage }}</div>
+  <div *ngIf="!winMessage" class="game">
+    <div class="row" *ngFor="let row of board; let i = index">
+      <div
+        *ngFor="let cell of row; let j = index"
+        class="cell"
+        (click)="makeMove(j)">
+        <div class="circle circle-{{ cell }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-box">
+    <button class="action-btn" (click)="createGame()">Create Game</button>
+    <button class="action-btn" (click)="joinGame()">Join Game</button>
+    <input
+      type="text"
+      [(ngModel)]="gameName"
+      class="form__input"
+      id="name"
+      placeholder="Game name"
+      required=""
+    />
+    <span *ngIf="errorMessage">{{ errorMessage }}</span>
+  </div>
+  <div>
+    <button class="action-btn" (click)="reset()">Reset</button>
+  </div>
+</div>

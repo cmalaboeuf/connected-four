@@ -1,0 +1,16 @@
+{
+  "name": "connected-four",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "setup": "npm install", 
+    "start": "npm run start --workspace=api & npm run start --workspace=front",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "front",
+    "api"
+  ]
+}
